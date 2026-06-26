@@ -5,13 +5,17 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+-- In my initial UML design. An owner that owns pets and each pet has a lists tasks like walking, feeding, giving medication, and more. Each task would have its own duration, priority, and so on. The scheduler will take the owner's available time for the day and select the tasks by sorting on priority, then duration, and doing what the owner has time left for. It will produce a daily plan that contains the scheduled tasks with the start time and their priorities. Whatever is left after those tasks like if the owner has time for them, then they can work on, but if not then it will just be a list of tasks that were not worked on. 
+
 - What classes did you include, and what responsibilities did you assign to each?
+-- The owner will be the one to add pets to the list. Each pet will have a list of tasks that the owner is to complete. It can also get or remove tasks too. Each task will show the time, priority, category, and the preferred time for this.
 
 **b. Design changes**
 
 - Did your design change during implementation?
+-- My design did not change, but the added methods and attributes changed a lot. Now there are a lot more than what I have originally have. 
 - If yes, describe at least one change and why you made it.
-
+-- N/A
 ---
 
 ## 2. Scheduling Logic and Tradeoffs

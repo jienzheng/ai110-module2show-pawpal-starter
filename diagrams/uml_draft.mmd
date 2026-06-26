@@ -1,0 +1,58 @@
+classDiagram
+    class Task {
+        -title: str
+        -description: str
+        -duration: int
+        -priority: int
+        -is_recurring: bool
+        -preferred_time: str
+        -is_completed: bool
+
+        +get_priority_score() int
+        +is_valid() bool
+        +mark_complete()
+    }
+
+    class Pet {
+        -name: str
+        -species: str
+        -age: int
+        -tasks: list[Task]
+
+        +add_task(task: Task)
+        +remove_task(task: Task)
+        +get_tasks() list[Task]
+    }
+
+    class Owner {
+        -name: str
+        -email: str
+        -available_minutes: int
+        -preferences: list[str]
+        -pets: list[Pet]
+
+        +add_pet(pet: Pet)
+        +get_pets() list[Pet]
+        +set_available_time(minutes: int)
+        +set_preferences(preferences: list[str])
+    }
+
+    class Scheduler {
+        -date: date
+        -scheduled_tasks: list[Task]
+        -skipped_tasks: list[Task]
+        -reasoning: list[str]
+        
+        +build_daily_plan(tasks: list[Task], available_minutes: int) Scheduler
+        +sort_tasks(tasks: list[Task]) list[Task]
+        +filter_tasks(tasks: list[Task]) list[Task]
+        +handle_conflicts(tasks: list[Task]) list[Task]
+        +get_total_duration() int
+        +explain_plan() str
+        +get_skipped_tasks() list[Task]
+    }
+
+    Owner "1" *-- "0..*" Pet : has
+    Pet "1" *-- "0..*" Task : has
+    Owner "1" --> "1" Scheduler : uses
+    Scheduler "1" --> "0..*" Task : schedules
